@@ -18,6 +18,25 @@ class UserViewSet(viewsets.ModelViewSet):
 class ArtistGenericView(GenericAPIView, ListModelMixin, CreateModelMixin):
     queryset = Artist.objects.all()
     serializer_class = ArtistSerializer
+    permission_classes = [permissions.AllowAny]
 
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
+
+class ArtistDetailGenericView(GenericAPIView, RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin):
+    queryset = Artist.objects.all()
+    serializer_class = ArtistSerializer
+    permission_classes = [permissions.AllowAny]
+
+    def get(self, request, *args, **kwargs):
+        return self.retrieve(request, *args, **kwargs)
+
+    def put(self, request, *args, **kwargs):
+        return self.update(request, *args, **kwargs)
+
+    def delete(self, request, *args, **kwargs):
+        return self.destroy(request, *args, **kwargs)
