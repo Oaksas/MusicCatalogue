@@ -1,9 +1,8 @@
 from django.contrib.auth.models import User
 from rest_framework import viewsets, permissions
 from catalogue.serializers import UserSerializer, ArtistSerializer
-from rest_framework.generics import GenericAPIView
+from rest_framework.generics import GenericAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from catalogue.models import Artist
-from rest_framework.mixins import ListModelMixin, CreateModelMixin, RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -15,28 +14,13 @@ class UserViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.AllowAny]
 
 
-class ArtistGenericView(GenericAPIView, ListModelMixin, CreateModelMixin):
+class ArtistGenericView(ListCreateAPIView):
     queryset = Artist.objects.all()
     serializer_class = ArtistSerializer
     permission_classes = [permissions.AllowAny]
 
-    def get(self, request, *args, **kwargs):
-        return self.list(request, *args, **kwargs)
 
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
-
-
-class ArtistDetailGenericView(GenericAPIView, RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin):
+class ArtistDetailGenericView(RetrieveUpdateDestroyAPIView):
     queryset = Artist.objects.all()
     serializer_class = ArtistSerializer
     permission_classes = [permissions.AllowAny]
-
-    def get(self, request, *args, **kwargs):
-        return self.retrieve(request, *args, **kwargs)
-
-    def put(self, request, *args, **kwargs):
-        return self.update(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        return self.destroy(request, *args, **kwargs)
