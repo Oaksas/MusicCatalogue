@@ -1,12 +1,12 @@
 from django.urls import include, path
 from rest_framework import routers
-from .views import UserViewSet, ArtistGenericView, ArtistDetailGenericView
+from .views import UserViewSet, ArtistView, ArtistDetailView
 
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('artists/', ArtistGenericView.as_view()),
-    path('artists/<int:pk>/', ArtistDetailGenericView.as_view()),
+    path('artists/', ArtistView.as_view()),
+    path('artists/<int:pk>/', ArtistDetailView.as_view()),
 ]

@@ -14,13 +14,13 @@ class UserViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.AllowAny]
 
 
-class ArtistGenericView(ListCreateAPIView):
+class ArtistView(ListCreateAPIView):
     queryset = Artist.objects.all()
     serializer_class = ArtistSerializer
     permission_classes = [permissions.AllowAny]
 
 
-class ArtistDetailGenericView(RetrieveUpdateDestroyAPIView):
+class ArtistDetailView(RetrieveUpdateDestroyAPIView):
     queryset = Artist.objects.all()
     serializer_class = ArtistSerializer
     permission_classes = [permissions.AllowAny]
