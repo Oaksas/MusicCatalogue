@@ -1,8 +1,8 @@
 from django.contrib.auth.models import User
 from rest_framework import viewsets, permissions
-from catalogue.serializers import UserSerializer, ArtistSerializer
+from catalogue.serializers import UserSerializer, ArtistSerializer, AlbumSerializer
 from rest_framework.generics import GenericAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView
-from catalogue.models import Artist
+from catalogue.models import Artist, Album
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -23,4 +23,13 @@ class ArtistView(ListCreateAPIView):
 class ArtistDetailView(RetrieveUpdateDestroyAPIView):
     queryset = Artist.objects.all()
     serializer_class = ArtistSerializer
+    permission_classes = [permissions.AllowAny]
+
+
+class AlbumViewSet(viewsets.ModelViewSet):
+    """
+      API endpoint that allows albums to be viewed or edited.
+    """
+    queryset = Album.objects.all()
+    serializer_class = AlbumSerializer
     permission_classes = [permissions.AllowAny]
