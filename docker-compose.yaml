@@ -1,0 +1,9 @@
+version: "3"
+services:
+  web:
+    build: .
+    command: ash -c "./.entrypoint.sh"
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"

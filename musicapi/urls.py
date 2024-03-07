@@ -13,11 +13,24 @@ Class-based views
 Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+
 """
 from django.contrib import admin
 from django.urls import path, include
-
+from rest_framework.schemas import get_schema_view
+from django.views.generic.base import TemplateView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('catalogue.urls')),
+    path('schema/', get_schema_view(
+        title="Music API",
+        description="API for music catalogue",
+        version="1.0.0",
+        public=True
+    ), name='openapi-schema'),
+    path('docs/', TemplateView.as_view(
+        template_name='catalogue/swagger-ui.html',
+        extra_context={'schema_url': 'openapi-schema'}
+    ), name='swagger-ui'
+    )
 ]

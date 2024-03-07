@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-5d8%)i4vhvs#uvz4y$94zah(=dw2xx8a6ej8ygim#aq3%h$3*(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 REST_FRAMEWORK = {
@@ -34,7 +34,7 @@ REST_FRAMEWORK = {
         'rest_framework.throttling.UserRateThrottle'
     ],
     'DEFAULT_THROTTLE_RATES': {
-        'anon': '100/day',
+        'anon': '2/day',
         'user': '1000/day'
     }
 }

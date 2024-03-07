@@ -4,6 +4,8 @@ from catalogue.serializers import UserSerializer, ArtistSerializer, AlbumSeriali
 from rest_framework.generics import GenericAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from catalogue.models import Artist, Album
 
+from rest_framework.throttling import AnonRateThrottle, UserRateThrottle
+
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -18,6 +20,7 @@ class ArtistView(ListCreateAPIView):
     queryset = Artist.objects.all()
     serializer_class = ArtistSerializer
     permission_classes = [permissions.AllowAny]
+    throttle_classes = [UserRateThrottle]
 
 
 class ArtistDetailView(RetrieveUpdateDestroyAPIView):
@@ -30,6 +33,8 @@ class AlbumViewSet(viewsets.ModelViewSet):
     """
       API endpoint that allows albums to be viewed or edited.
     """
-    queryset = Album.objects.all()
     serializer_class = AlbumSerializer
     permission_classes = [permissions.AllowAny]
+
+    def get_queryset(self):
+        return Album.objects.all()

@@ -4,7 +4,7 @@ from .views import UserViewSet, ArtistView, ArtistDetailView, AlbumViewSet
 
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
-router.register(r'albums', AlbumViewSet)
+router.register(r'albums', AlbumViewSet, basename='album')
 
 urlpatterns = [
     path('', include(router.urls)),
