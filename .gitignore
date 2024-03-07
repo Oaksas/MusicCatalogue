@@ -58,3 +58,5 @@ __pycache__/
 # Ignore system files that might be created by your operating system
 .DS_Store
 Thumbs.db
+
+.poetry.lock
