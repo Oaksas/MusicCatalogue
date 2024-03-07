@@ -22,6 +22,7 @@ from django.views.generic.base import TemplateView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('catalogue.urls')),
+
     path('schema/', get_schema_view(
         title="Music API",
         description="API for music catalogue",
@@ -32,5 +33,6 @@ urlpatterns = [
         template_name='catalogue/swagger-ui.html',
         extra_context={'schema_url': 'openapi-schema'}
     ), name='swagger-ui'
-    )
+    ),
+    path('chat/', include('chat.urls')),
 ]

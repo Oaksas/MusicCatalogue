@@ -42,6 +42,8 @@ REST_FRAMEWORK = {
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -49,8 +51,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'catalogue'
+    'catalogue',
+    'chat'
 ]
+
+ASGI_APPLICATION = 'musicapi.asgi.application'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
