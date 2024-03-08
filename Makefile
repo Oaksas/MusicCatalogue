@@ -21,4 +21,4 @@ update: install migrate;
 install:
 	poetry install 
 
-	
+
