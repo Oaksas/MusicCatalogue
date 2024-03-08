@@ -19,6 +19,13 @@ update: install migrate;
 
 .PHONY: install
 install:
-	poetry install 
+	poetry install
 
 
+.PHONY: install-pre-cpommit
+install-pre-cpommit:
+	poetry run pre-commit uninstall; poetry run pre-commit  install
+
+.PHONY: lint
+lint:
+	poetry run pre-commit run --all-files

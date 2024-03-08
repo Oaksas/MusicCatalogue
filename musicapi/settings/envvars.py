@@ -8,10 +8,9 @@ example:
 export CORESETTING_DEBUG=True
 
 Could be referenced as global as:
-DEBUG  
+DEBUG
 
 
 """
 
-deepupdate(globals(), get_settings_from_environment(
-    ENVVAR_PREFIX))  # type: ignore
+deepupdate(globals(), get_settings_from_environment(ENVVAR_PREFIX))  # type: ignore

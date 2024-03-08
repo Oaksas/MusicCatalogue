@@ -1,6 +1,7 @@
 from django.urls import include, path
 from rest_framework import routers
-from .views import UserViewSet, ArtistView, ArtistDetailView, AlbumViewSet
+
+from .views import AlbumViewSet, ArtistDetailView, ArtistView, UserViewSet
 
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)

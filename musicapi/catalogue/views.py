@@ -1,10 +1,9 @@
+from catalogue.models import Album, Artist
+from catalogue.serializers import AlbumSerializer, ArtistSerializer, UserSerializer
 from django.contrib.auth.models import User
-from rest_framework import viewsets, permissions
-from catalogue.serializers import UserSerializer, ArtistSerializer, AlbumSerializer
-from rest_framework.generics import GenericAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView
-from catalogue.models import Artist, Album
-
-from rest_framework.throttling import AnonRateThrottle, UserRateThrottle
+from rest_framework import permissions, viewsets
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.throttling import UserRateThrottle
 
 
 class UserViewSet(viewsets.ModelViewSet):
