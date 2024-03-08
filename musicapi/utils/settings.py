@@ -1,5 +1,5 @@
 import os
-from misc import yaml_coerce
+from utils.misc import yaml_coerce
 
 'CORESETTINGS'
 
