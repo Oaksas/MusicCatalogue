@@ -44,8 +44,6 @@ dist/
 # Ignore local configuration
 local_settings.py
 
-# Ignore generated HTML files
-*.html
 
 # Ignore coverage reports
 htmlcov/
