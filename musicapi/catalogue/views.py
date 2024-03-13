@@ -1,5 +1,5 @@
-from catalogue.models import Album, Artist
-from catalogue.serializers import AlbumSerializer, ArtistSerializer, UserSerializer
+from .models import Album, Artist
+from .serializers import AlbumSerializer, ArtistSerializer, UserSerializer
 from django.contrib.auth.models import User
 from rest_framework import permissions, viewsets
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView

@@ -76,8 +76,14 @@ WSGI_APPLICATION = 'wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'db.sqlite3',
+       'ENGINE': 'django.db.backends.postgresql',
+       'NAME': 'musicapi',
+         'USER': 'musicapi',
+         'PASSWORD': 'musicapi',
+         'HOST': 'localhost',
+         'PORT': '5432',
+         'ATOMIC_REQUESTS': True,
+         'CONN_MAX_AGE': 600,
     }
 }
 
