@@ -20,6 +20,11 @@ SECRET_KEY = ''
 DEBUG = False
 
 ALLOWED_HOSTS = ['*']
+CORS_ALLOW_ALL_ORIGINS = True
+INTERNAL_IPS = [
+    '127.0.0.1',
+    'localhost',
+]
 
 REST_FRAMEWORK = {
     'DEFAULT_THROTTLE_CLASSES': [
@@ -76,14 +81,14 @@ WSGI_APPLICATION = 'wsgi.application'
 
 DATABASES = {
     'default': {
-       'ENGINE': 'django.db.backends.postgresql',
-       'NAME': 'musicapi',
-         'USER': 'musicapi',
-         'PASSWORD': 'musicapi',
-         'HOST': 'localhost',
-         'PORT': '5432',
-         'ATOMIC_REQUESTS': True,
-         'CONN_MAX_AGE': 600,
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'musiccatalogue',
+        'USER': 'musiccatalogue',
+        'PASSWORD': 'musiccatalogue',
+        'HOST': '127.0.0.1',
+        'PORT': '5433',
+        'ATOMIC_REQUESTS': True,
+        'CONN_MAX_AGE': 600,
     }
 }
 

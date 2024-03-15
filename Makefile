@@ -1,18 +1,18 @@
 .PHONY: run-server
 run-server:
-	poetry run python ./musicapi/manage.py runserver
+	poetry run python3 ./musicapi/manage.py runserver
 
 .PHONY: migrations
 migrations:
-	poetry run python ./musicapi/manage.py makemigrations
+	poetry run python3 ./musicapi/manage.py makemigrations
 
 .PHONY: migrate
 migrate:
-	poetry run python ./musicapi/manage.py migrate
+	poetry run python3 ./musicapi/manage.py migrate
 
 .PHONY: superuser
 superuser:
-	poetry run python ./musicapi/manage.py createsuperuser
+	poetry run python3 ./musicapi/manage.py createsuperuser
 
 .PHONY: update
 update: install migrate;
@@ -26,9 +26,8 @@ up-dependencies-only:
 install:
 	poetry install
 
-
-.PHONY: install-pre-cpommit
-install-pre-cpommit:
+.PHONY: install-pre-commit
+install-pre-commit:
 	poetry run pre-commit uninstall; poetry run pre-commit  install
 
 .PHONY: lint
