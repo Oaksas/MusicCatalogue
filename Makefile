@@ -1,18 +1,18 @@
 .PHONY: run-server
 run-server:
-	poetry run python3 ./musicapi/manage.py runserver
+	poetry run python ./musicapi/manage.py runserver
 
 .PHONY: migrations
 migrations:
-	poetry run python3 ./musicapi/manage.py makemigrations
+	poetry run python ./musicapi/manage.py makemigrations
 
 .PHONY: migrate
 migrate:
-	poetry run python3 ./musicapi/manage.py migrate
+	poetry run python ./musicapi/manage.py migrate
 
 .PHONY: superuser
 superuser:
-	poetry run python3 ./musicapi/manage.py createsuperuser
+	poetry run python ./musicapi/manage.py createsuperuser
 
 .PHONY: update
 update: install migrate;
