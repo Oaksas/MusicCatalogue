@@ -106,27 +106,5 @@ poetry run flake8
 ```
 
 
-Production Deployment
----------------------
 
-For production deployment, the project can be containerized using Docker. Follow these steps:
-
-1. Install Docker and Docker Compose.
-
-2. Build the Docker image:
-
-    ```bash
-    docker-compose build
-    ```
-
-3. Run the containers:
-
-    ```bash
-    docker-compose up -d
-    ```
-
-4. Access the API at the specified URL.
-
-
-```
 
