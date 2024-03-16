@@ -34,29 +34,43 @@
     </form>
 
     <script type="text/javascript">
+      function formatTimestamp(timestamp) {
+         const options = {
+        weekday: 'short', // Abbreviated weekday name (e.g., "Tue")
+        month: 'short',   // Abbreviated month name (e.g., "Mar")
+        day: '2-digit',   // Two-digit day of the month (e.g., "16")
+        hour: 'numeric',  // Hour in 12-hour format (e.g., "9")
+        minute: '2-digit', // Two-digit minute (e.g., "00")
+        hour12: true      // Use 12-hour clock (e.g., "am/pm")
+    };
+    return new Date(timestamp).toLocaleString('en-US', options);
+}
+
       let url = `ws://${window.location.host}/ws/chat/lobby/`;
 
       const chatSocket = new WebSocket(url);
       chatSocket.onmessage = function (e) {
         const data = JSON.parse(e.data);
-        console.log(data);
         if (data.type === "chat") {
           console.log("foundit");
           let messages = document.getElementById("messages");
 
           messages.insertAdjacentHTML(
             "beforeend",
-            `<div class="bg-lime-700 rounded-md p-2 m-2"><p>${data.message}</p></div>`
-          );
+            `<div class="bg-lime-700 rounded-md p-2 m-2"><p>${data.message } </p></div>
+            <div class='flex w-full justify-end p-2 m-2'><p>${data.timestamp}</p></div>`          );
         }
       };
       let form = document.getElementById("form");
       form.addEventListener("submit", function (e) {
         e.preventDefault();
+        let timestamp = formatTimestamp( new Date().getTime());
         let message = document.getElementById("message").value;
         chatSocket.send(
           JSON.stringify({
             message: message,
+            timestamp: timestamp 
+
           })
         );
         form.reset();
